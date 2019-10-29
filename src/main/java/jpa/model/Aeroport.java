@@ -21,6 +21,10 @@ public class Aeroport {
 	private Integer id;
 	@Column(name = "nom", length = 150, nullable = false )
 	private String nom;
+	@OneToMany(mappedBy = "aeroportDepart")
+	private Set<Vol> volDeparts;
+	@OneToMany(mappedBy = "aeroportArrivee")
+	private Set<Vol> volArrivees;
 	@OneToMany(mappedBy="key.aeroport")
 	Set<Liaison> liaisons;
 	
@@ -45,26 +49,48 @@ public class Aeroport {
 		this.id = id;
 	}
 	
-	
-	
-	public Integer getId_aeroport() {
+		
+	public Integer getId() {
 		return id;
 	}
-	
-	public void setId_aeroport(Integer id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	public String getNom_aeroport() {
+
+	public String getNom() {
 		return nom;
 	}
-	
-	public void setNom_aeroport(String nom) {
+
+	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public Set<Vol> getVolDeparts() {
+		return volDeparts;
+	}
+
+	public void setVolDeparts(Set<Vol> volDeparts) {
+		this.volDeparts = volDeparts;
+	}
+
+	public Set<Vol> getVolArrivees() {
+		return volArrivees;
+	}
+
+	public void setVolArrivees(Set<Vol> volArrivees) {
+		this.volArrivees = volArrivees;
 	}
 	
 	
-	
+	public Set<Liaison> getLiaisons() {
+		return liaisons;
+	}
+
+	public void setLiaisons(Set<Liaison> liaisons) {
+		this.liaisons = liaisons;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
