@@ -34,13 +34,5 @@ public void testInsert() {
 	assertTrue(opt.isPresent());
 		
 	}
-//	@Test
-//	public void testfindByNom () {
-//	assertTrue(passagerRepository.findByNom("Lola").isPresent());
-//	}
 
-//public void testindByIdWithVol() {
-//Optional<Passager> opt = passagerRepository.findByIdWithReservation(100);
-//assertNotEquals(1, opt.get().getReservations().size());
-//}	
 }

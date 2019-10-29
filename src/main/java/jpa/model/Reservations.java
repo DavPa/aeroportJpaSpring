@@ -35,6 +35,9 @@ public class Reservations {
 	@ManyToOne
 	@JoinColumn(name = "reservation_id_client",foreignKey=@ForeignKey(name="reservation_id_client_fk"))
 	private Client client;
+	@ManyToOne
+	@JoinColumn(name = "id_vol_reservations", foreignKey = @ForeignKey(name = "reservations_id_vol_fk"))
+	private Vol vol;
 
 	public Reservations(Integer numero) {
 		super();
