@@ -1,8 +1,6 @@
 package jpa.model;
 
 import java.util.Date;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -11,9 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -37,9 +32,20 @@ public class Reservations {
 	@ManyToOne
 	@JoinColumn(name = "passager_id_reservation", foreignKey = @ForeignKey(name = "passager_id_reservation_fk"))
 	private Passager passager;
+	@ManyToOne
+	@JoinColumn(name = "reservation_id_client",foreignKey=@ForeignKey(name="reservation_id_client_fk"))
+	private Client client;
 
 	public Reservations() {
 		super();
+	}
+	
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	/**
