@@ -46,11 +46,17 @@ public class Passager {
 	
 	@OneToMany(mappedBy="passager")
 	private Set<Reservations> reservations;
-	
+	@OneToMany(mappedBy="passager")
+	private Set<Vol> vols;
 	
 	public Passager() {
 
 	}
+	public Passager(String nom) {
+		super();
+		this.nom = nom;
+	}
+	
 
 		
 	
