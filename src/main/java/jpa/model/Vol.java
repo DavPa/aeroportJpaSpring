@@ -46,6 +46,9 @@ public class Vol {
 	@ManyToOne
 	@JoinColumn(name = "aeroport_arrivee_vol", foreignKey = @ForeignKey(name = "vol_aeroport_arrivee_fk"))
 	private Aeroport aeroportArrivee;
+	@ManyToOne
+	@JoinColumn(name = "id_passager_vol", foreignKey = @ForeignKey(name = "vol_id_passager_fk"))
+	private Passager passager;
 	@OneToMany(mappedBy="key.vol")
 	Set<CompagnieAerienneVol> compagnieAerienneVols;
 	

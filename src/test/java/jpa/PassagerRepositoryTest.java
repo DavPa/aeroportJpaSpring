@@ -39,8 +39,8 @@ public void testInsert() {
 //	assertTrue(passagerRepository.findByNom("Lola").isPresent());
 //	}
 
-public void testindByIdWithVol() {
-Optional<Passager> opt = passagerRepository.findByIdWithReservation(100);
-assertNotEquals(1, opt.get().getReservations().size());
-}	
+//public void testindByIdWithVol() {
+//Optional<Passager> opt = passagerRepository.findByIdWithReservation(100);
+//assertNotEquals(1, opt.get().getReservations().size());
+//}	
 }

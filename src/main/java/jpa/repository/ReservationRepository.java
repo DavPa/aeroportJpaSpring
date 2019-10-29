@@ -10,10 +10,10 @@ import jpa.model.Reservations;
 
 public interface ReservationRepository extends JpaRepository<Reservations ,Long> {
 
-	
-    @Query("select distinct r from  Reservation r left join fetch r.client where r.id=:id")
-
-	public Optional <Reservations>findByIdWithClient(@Param("id") Integer id);
+//	
+//    @Query("select distinct r from  Reservation r left join fetch r.client where r.id=:id")
+//
+//	public Optional <Reservations>findByIdWithClient(@Param("id") Integer id);
 	
     
 	
