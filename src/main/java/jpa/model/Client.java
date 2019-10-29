@@ -51,7 +51,7 @@ public abstract class Client {
 	@OneToOne
 	@JoinColumn(name = "login_id_client", foreignKey = @ForeignKey(name = "login_id_client_fk"))
 	private Login login;
-	@OneToMany(mappedBy="reservations")
+	@OneToMany(mappedBy="client")
 	private Set<Reservations> reservations;
 	@Version
 	private int version;

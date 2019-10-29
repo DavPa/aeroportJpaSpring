@@ -13,11 +13,9 @@
 
 <context:annotation-config></context:annotation-config>
 
-<context:component-scan base-package = "aeroportJpaSpring.dao"></context:component-scan>
-
 <context:property-placeholder location = "classpath:jdbc.properties"/>	
 
-<jpa:repositories base-package="aeroportJpaSpring.repository"></jpa:repositories>
+<jpa:repositories base-package="jpa.repository"></jpa:repositories>
 
 	<!-- DataSource -->
 	<bean id = "dataSource" class = "org.apache.commons.dbcp2.BasicDataSource">
@@ -32,7 +30,7 @@
 	<!-- entityManagerFactory -->
 	<bean id = "entityManagerFactory" class = "org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name = "dataSource" ref = "dataSource"/>
-		<property name = "packagesToScan" value = "springjpa.model"/>
+		<property name = "packagesToScan" value = "jpa.model"/>
 		<property name = "jpaVendorAdapter">
 			<bean class = "org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name = "databasePlatform" value ="${hibernate.dialect}"/>
