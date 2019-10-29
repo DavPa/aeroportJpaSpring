@@ -45,7 +45,7 @@ public class Passager {
 	private Adresse adresse;
 	
 	@OneToMany(mappedBy="passager")
-	private Set<Reservation> reservations;
+	private Set<Reservations> reservations;
 	
 	
 	public Passager() {
@@ -132,14 +132,14 @@ public class Passager {
 	/**
 	 * @return the reservations
 	 */
-	public Set<Reservation> getReservations() {
+	public Set<Reservations> getReservations() {
 		return reservations;
 	}
 
 	/**
 	 * @param reservations the reservations to set
 	 */
-	public void setReservations(Set<Reservation> reservations) {
+	public void setReservations(Set<Reservations> reservations) {
 		this.reservations = reservations;
 	}
 	
