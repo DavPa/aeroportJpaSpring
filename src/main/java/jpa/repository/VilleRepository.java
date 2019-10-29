@@ -15,7 +15,8 @@ public interface VilleRepository extends JpaRepository<Ville, Integer> {
 
 		public List<Ville> findByNomLike(String nom);
 		
-		@Query("select v from Ville v where s.nom=:nomDeLaVille")
-		public List<Ville> findCustomByNomDeLaVille(@Param("nomDeLaVille") String nomDeLaVille);
+		//@Query("select v from Ville v where s.nom=:nomDeLaVille")
+		//public List<Ville> findCustomByNomDeLaVille(@Param("nomDeLaVille") String nomDeLaVille);
+		
 		
 }
