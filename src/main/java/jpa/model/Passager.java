@@ -51,6 +51,11 @@ public class Passager {
 	public Passager() {
 
 	}
+	public Passager(String nom) {
+		super();
+		this.nom = nom;
+	}
+	
 
 		
 	
