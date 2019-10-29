@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import jpa.model.Reservation;
+import jpa.model.Reservations;
 
 @Repository
 @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
@@ -24,15 +24,15 @@ public class DaoReservationImpl implements DaoReservation {
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 
-	public void insert(Reservation obj) {
+	public void insert(Reservations obj) {
 		
 			em.persist(obj);
 			
 	}
 
 	@Override
-	public Reservation update(Reservation obj) {
-		Reservation r = null;
+	public Reservations update(Reservations obj) {
+		Reservations r = null;
 		
 			r = em.merge(obj);
 			
@@ -40,9 +40,9 @@ public class DaoReservationImpl implements DaoReservation {
 	}
 
 	@Override
-	public void delete(Reservation obj) {
+	public void delete(Reservations obj) {
 		
-		Reservation r = em.merge(obj);
+		Reservations r = em.merge(obj);
 		
 		 em.remove(r);
 	}
@@ -55,7 +55,7 @@ public class DaoReservationImpl implements DaoReservation {
 
 	public void deleteByKey(Long key) {
 	
-			Reservation r =em.find(Reservation.class, key);
+			Reservations r =em.find(Reservations.class, key);
 			em.remove(r);
 
 	}
@@ -63,15 +63,15 @@ public class DaoReservationImpl implements DaoReservation {
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 
-	public Reservation findByKey(Long key) {
-		Reservation r = null;
-		r = em.find(Reservation.class, key);
+	public Reservations findByKey(Long key) {
+		Reservations r = null;
+		r = em.find(Reservations.class, key);
 		return r;
 	}
 
 	@Override
-	public List<Reservation> findAll() {
-		List<Reservation> reservations = null;
+	public List<Reservations> findAll() {
+		List<Reservations> reservations = null;
 		Query query = em.createQuery("from Reservation r");
 		reservations = query.getResultList();
 		return reservations;

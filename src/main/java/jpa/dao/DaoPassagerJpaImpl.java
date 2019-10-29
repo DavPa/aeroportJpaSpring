@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import jpa.model.Passager;
-import jpa.model.Reservation;
+import jpa.model.Reservations;
 
 
 
@@ -48,7 +48,7 @@ public class DaoPassagerJpaImpl implements DaoPassager{
 	public void delete(Passager obj) {
 		
 		 Passager p= em.merge(obj);
-		 for (Reservation r : p.getReservations()) {
+		 for (Reservations r : p.getReservations()) {
 				r.setPassager(null);
 			}
 		 em.remove(p);
@@ -60,7 +60,7 @@ public class DaoPassagerJpaImpl implements DaoPassager{
 		
 		
 			Passager p=em.find(Passager.class, key);
-			 for (Reservation r : p.getReservations()) {
+			 for (Reservations r : p.getReservations()) {
 					r.setPassager(null);
 				}
 			 em.remove(p);
