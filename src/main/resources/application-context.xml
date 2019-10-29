@@ -13,8 +13,6 @@
 
 <context:annotation-config></context:annotation-config>
 
-<context:component-scan base-package = "jpa.dao"></context:component-scan>
-
 <context:property-placeholder location = "classpath:jdbc.properties"/>	
 
 <jpa:repositories base-package="jpa.repository"></jpa:repositories>
