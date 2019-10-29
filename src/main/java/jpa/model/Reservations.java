@@ -23,7 +23,7 @@ import javax.persistence.TemporalType;
 @Table(name = "reservation")
 @SequenceGenerator(name = "seqReservation", sequenceName = "seq_reservation", initialValue = 100, allocationSize = 1)
 
-public class Reservation {
+public class Reservations {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqReservation")
@@ -38,7 +38,7 @@ public class Reservation {
 	@JoinColumn(name = "passager_id_reservation", foreignKey = @ForeignKey(name = "passager_id_reservation_fk"))
 	private Passager passager;
 
-	public Reservation() {
+	public Reservations() {
 		super();
 	}
 
@@ -114,7 +114,7 @@ public class Reservation {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Reservation other = (Reservation) obj;
+		Reservations other = (Reservations) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
