@@ -27,7 +27,8 @@ public class PassagerRepositoryTest {
 	private PassagerRepository passagerRepository ; 
 	@Test
 public void testInsert() {
-	Passager passager = new Passager ("passager Repo");
+	Passager passager = new Passager ();
+	passager.setPrenom("xx");
 	passagerRepository.save(passager);
 	Optional<Passager> opt=passagerRepository.findById(passager.getId());
 	assertTrue(opt.isPresent());
@@ -35,13 +36,11 @@ public void testInsert() {
 	}
 //	@Test
 //	public void testfindByNom () {
-//		assertTrue(passagerRepository.findByNom("x").isPresent());
+//	assertTrue(passagerRepository.findByNom("Lola").isPresent());
 //	}
-//	@Test
-//	public void testindByIdWithReservation() {
-//		Optional<Passager> opt = passagerRepository.findByIdWithReservation(100)(100);
-//		assertNotEquals(0, opt.get().getReservations()().size());
-//	}
-//	
-	
+
+public void testindByIdWithVol() {
+Optional<Passager> opt = passagerRepository.findByIdWithReservation(100);
+assertNotEquals(1, opt.get().getReservations().size());
+}	
 }

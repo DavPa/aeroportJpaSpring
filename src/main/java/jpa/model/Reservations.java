@@ -36,6 +36,11 @@ public class Reservations {
 	@JoinColumn(name = "reservation_id_client",foreignKey=@ForeignKey(name="reservation_id_client_fk"))
 	private Client client;
 
+	public Reservations(Integer numero) {
+		super();
+		this.numero = numero;
+	}
+
 	public Reservations() {
 		super();
 	}
