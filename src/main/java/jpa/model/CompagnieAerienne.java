@@ -32,7 +32,11 @@ public class CompagnieAerienne {
 		super();
 	}
 	
-	
+	public CompagnieAerienne(String nom) {
+		super();
+		this.nom = nom;
+	}
+
 
 	public CompagnieAerienne(Long id, String nom, Set<CompagnieAerienneVol> compagnieAerienneVols) {
 		super();
