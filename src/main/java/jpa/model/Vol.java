@@ -2,12 +2,14 @@ package jpa.model;
 
 import java.util.Date;
 import java.util.Set;
-
+import javax.persistence.ForeignKey;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -38,6 +40,12 @@ public class Vol {
 	private Date heureDepart;
 	@Column(name = "heure_arrivee_vol")
 	private Date heureArivee;
+	@ManyToOne
+	@JoinColumn(name = "aeroport_depart_vol", foreignKey = @ForeignKey(name = "vol_aeroport_depart_fk"))
+	private Aeroport aeroportDepart;
+	@ManyToOne
+	@JoinColumn(name = "aeroport_arrivee_vol", foreignKey = @ForeignKey(name = "vol_aeroport_arrivee_fk"))
+	private Aeroport aeroportArrivee;
 	@OneToMany(mappedBy="key.vol")
 	Set<CompagnieAerienneVol> compagnieAerienneVols;
 	
@@ -57,9 +65,8 @@ public class Vol {
 		this.heureArivee = heureArivee;
 		this.compagnieAerienneVols = compagnieAerienneVols;
 	}
-
-
-
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -107,6 +114,32 @@ public class Vol {
 	public void setCompagnieAerienneVols(Set<CompagnieAerienneVol> compagnieAerienneVols) {
 		this.compagnieAerienneVols = compagnieAerienneVols;
 	}
+
+	
+	
+	public Aeroport getAeroportDepart() {
+		return aeroportDepart;
+	}
+
+
+
+	public void setAeroportDepart(Aeroport aeroportDepart) {
+		this.aeroportDepart = aeroportDepart;
+	}
+
+
+
+	public Aeroport getAeroportArrivee() {
+		return aeroportArrivee;
+	}
+
+
+
+	public void setAeroportArrivee(Aeroport aeroportArrivee) {
+		this.aeroportArrivee = aeroportArrivee;
+	}
+
+
 
 	@Override
 	public int hashCode() {
