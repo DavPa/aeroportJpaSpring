@@ -1,6 +1,7 @@
 package jpa.model;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -13,6 +14,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "reservation")
@@ -28,12 +31,13 @@ public class Reservations {
 	private Integer numero;
 	@Column(name = "date_reservation")
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date_reservation;
 	@ManyToOne
 	@JoinColumn(name = "passager_id_reservation", foreignKey = @ForeignKey(name = "passager_id_reservation_fk"))
 	private Passager passager;
 	@ManyToOne
-	@JoinColumn(name = "reservation_id_client",foreignKey=@ForeignKey(name="reservation_id_client_fk"))
+	@JoinColumn(name = "reservation_id_client", foreignKey = @ForeignKey(name = "reservation_id_client_fk"))
 	private Client client;
 	@ManyToOne
 	@JoinColumn(name = "id_vol_reservations", foreignKey = @ForeignKey(name = "reservations_id_vol_fk"))
@@ -47,7 +51,7 @@ public class Reservations {
 	public Reservations() {
 		super();
 	}
-	
+
 	public Client getClient() {
 		return client;
 	}
@@ -136,6 +140,5 @@ public class Reservations {
 			return false;
 		return true;
 	}
-
 
 }
