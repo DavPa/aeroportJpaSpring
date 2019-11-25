@@ -2,9 +2,10 @@ package jpa.model;
 
 import java.util.Date;
 import java.util.Set;
-import javax.persistence.ForeignKey;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,13 +20,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "vol")
 @NamedQueries({
-	@NamedQuery(name = "Vol.findByKeyWithCompagnieAeriennes", 
-	query = "select distinct v from Vol v left join fetch v.compagnieAerienneVols cav " 
-	+ " left join fetch cav.key.compagnieAerienne c where v.id =:key"),
-	@NamedQuery(name = "Vol.findAllWithCompagnieAeriennes", 
-	query = "select distinct v from Vol v left join fetch v.compagnieAerienneVols cav" 
-	+ " left join fetch cav.key.compagnieAerienne c"),
-})
+		@NamedQuery(name = "Vol.findByKeyWithCompagnieAeriennes", query = "select distinct v from Vol v left join fetch v.compagnieAerienneVols cav "
+				+ " left join fetch cav.key.compagnieAerienne c where v.id =:key"),
+		@NamedQuery(name = "Vol.findAllWithCompagnieAeriennes", query = "select distinct v from Vol v left join fetch v.compagnieAerienneVols cav"
+				+ " left join fetch cav.key.compagnieAerienne c"), })
 @SequenceGenerator(name = "seqVol", sequenceName = "seq_vol", initialValue = 100, allocationSize = 1)
 public class Vol {
 	@Id
@@ -48,14 +46,12 @@ public class Vol {
 	private Aeroport aeroportArrivee;
 	@OneToMany(mappedBy = "vol")
 	private Set<Reservations> reservations;
-	@OneToMany(mappedBy="key.vol")
+	@OneToMany(mappedBy = "key.vol")
 	Set<CompagnieAerienneVol> compagnieAerienneVols;
-	
+
 	public Vol() {
-		
+
 	}
-	
-	
 
 	public Vol(Long id, Date dateDepart, Date dateArivee, Date heureDepart, Date heureArivee,
 			Set<CompagnieAerienneVol> compagnieAerienneVols) {
@@ -67,8 +63,7 @@ public class Vol {
 		this.heureArivee = heureArivee;
 		this.compagnieAerienneVols = compagnieAerienneVols;
 	}
-	
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -108,7 +103,7 @@ public class Vol {
 	public void setHeureArivee(Date heureArivee) {
 		this.heureArivee = heureArivee;
 	}
-	
+
 	public Set<CompagnieAerienneVol> getCompagnieAerienneVols() {
 		return compagnieAerienneVols;
 	}
@@ -117,31 +112,25 @@ public class Vol {
 		this.compagnieAerienneVols = compagnieAerienneVols;
 	}
 
-	
-	
 	public Aeroport getAeroportDepart() {
 		return aeroportDepart;
 	}
-
-
 
 	public void setAeroportDepart(Aeroport aeroportDepart) {
 		this.aeroportDepart = aeroportDepart;
 	}
 
-
-
 	public Aeroport getAeroportArrivee() {
 		return aeroportArrivee;
 	}
-
-
 
 	public void setAeroportArrivee(Aeroport aeroportArrivee) {
 		this.aeroportArrivee = aeroportArrivee;
 	}
 
-
+	public String getInfo() {
+		return id + " destination " + aeroportArrivee.getNom();
+	}
 
 	@Override
 	public int hashCode() {

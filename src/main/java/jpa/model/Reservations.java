@@ -116,6 +116,14 @@ public class Reservations {
 		this.passager = passager;
 	}
 
+	public Vol getVol() {
+		return vol;
+	}
+
+	public void setVol(Vol vol) {
+		this.vol = vol;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
